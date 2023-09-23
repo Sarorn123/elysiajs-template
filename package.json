@@ -1,0 +1,32 @@
+{
+  "name": "elysia-drizzle",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "generate": "kysely-codegen --dialect postgres",
+    "migrate:up": "bun src/db/migrator.ts up && bun run generate",
+    "migrate:down": "bun src/db/migrator.ts down && bun run generate",
+    "migrate:latest": "bun src/db/migrator.ts latest && bun run generate",
+    "migrate:redo": "bun src/db/migrator.ts redo && bun run generate",
+    "make:migrations": "bun src/db/migrator.ts create $name"
+  },
+  "dependencies": {
+    "@elysiajs/cookie": "^0.6.1",
+    "@elysiajs/cors": "^0.6.0",
+    "@elysiajs/jwt": "^0.6.4",
+    "@elysiajs/swagger": "^0.6.2",
+    "elysia": "latest",
+    "kysely": "^0.26.3",
+    "kysely-migration-cli": "0.2.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/nodemon": "^1.19.2",
+    "@types/pg": "^8.10.2",
+    "bun-types": "latest",
+    "kysely-codegen": "^0.10.1"
+  },
+  "module": "src/index.js"
+}
